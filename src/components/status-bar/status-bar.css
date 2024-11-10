@@ -67,6 +67,9 @@
     background-color: var(--status-bar-button-hover-color);
     opacity: 1;
 }
+.status-bar button:hover:disabled {
+    /* background-color: ; */
+}
 
 .status-bar .button-icon use,
 .status-bar .site-domain-image use {

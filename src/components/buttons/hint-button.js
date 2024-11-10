@@ -13,7 +13,7 @@ export default function HintButton ({menuHandler}) {
     );
 
     return (
-        <button id="hint-button" type="button" title="Hint" onClick={clickHandler}>
+        <button disabled={true} id="hint-button" type="button" title="Hint" onClick={clickHandler}>
             <ButtonIcon name="hint" />
         </button>
     )

@@ -280,6 +280,9 @@ button:hover,
 a.btn:hover {
     box-shadow: var(--button-hover-shadow);
 }
+button:hover:disabled {
+    background-color: "black"
+}
 
 .portrait .buttons a {
     font-size: 1rem;
