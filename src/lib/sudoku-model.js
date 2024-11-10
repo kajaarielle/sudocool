@@ -144,7 +144,7 @@ function actionsBlocked(grid) {
 export const modelHelpers = {
     CENTER_CELL: 40,
     DEFAULT_SETTINGS: {
-        [SETTINGS.darkMode]: false,
+        [SETTINGS.darkMode]: true,
         [SETTINGS.showTimer]: true,
         [SETTINGS.simplePencilMarking]: false,
         [SETTINGS.outlineSelection]: false,
