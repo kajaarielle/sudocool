@@ -14,7 +14,7 @@ function SiteLink () {
     return (
         <div className="site-link">
             <a href="https://sudokuexchange.com/">
-                <svg className="site-domain-image" version="1.1" viewBox="0 0 650 120" title="SudokuExchange.com">
+                <svg className="site-domain-image" version="1.1" viewBox="0 0 650 120" title="Sudocool">
                     <use href="#site-domain" />
                 </svg>
             </a>
