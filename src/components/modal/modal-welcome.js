@@ -55,6 +55,7 @@ function SudokuDatasetSelection ({level, puzzles, showRatings, shortenLinks}) {
                 <a href={`./?s=${puzzleString}&d=${level}&i=${i+1}`} onClick={stopPropagation}>
                     <SudokuMiniGrid puzzle={puzzle} showRatings={showRatings} />
                 </a>
+                <p style={{textAlign: "center", marginTop: "0px", fontSize: "small"}}>Sudoku {i+1}</p>
             </div>
         );
     })
@@ -62,7 +63,6 @@ function SudokuDatasetSelection ({level, puzzles, showRatings, shortenLinks}) {
     const clickHandler = () => setCollapsed(old => !old);
     return (
         <div className={classes} onClick={clickHandler}>
-            {/* <h2>{levelName}</h2> */}
             <div style={{display: "flex", flexWrap: "wrap", justifyContent: "space-around"}}>
                 {puzzleLinks}
             </div>
