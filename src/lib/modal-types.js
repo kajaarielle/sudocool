@@ -3,6 +3,7 @@ export const MODAL_TYPE_SAVED_PUZZLES = "saved-puzzles";
 export const MODAL_TYPE_RESUME_OR_RESTART = "resume-or-restart";
 export const MODAL_TYPE_INVALID_INITIAL_DIGITS = 'invalid-initial-digits';
 export const MODAL_TYPE_PASTE = 'paste';
+export const MODAL_TYPE_PASTE_EXAMPLE = 'paste-example';
 export const MODAL_TYPE_SHARE = 'share';
 export const MODAL_TYPE_SETTINGS = 'settings';
 export const MODAL_TYPE_CHECK_RESULT = 'check-result';

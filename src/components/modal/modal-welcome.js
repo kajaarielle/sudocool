@@ -40,6 +40,36 @@ function RecentlySharedSection ({level, puzzles, showRatings, shortenLinks}) {
     );
 }
 
+function SudokuDatasetSelection ({level, puzzles, showRatings, shortenLinks}) {
+    const [collapsed, setCollapsed] = useState(true);
+    // const levelName = modelHelpers.difficultyLevelName(level);
+    if ( !puzzles || puzzles.length < 1) {
+        return null;
+    }
+    const puzzleLinks = puzzles.map((puzzle, i) => {
+        const puzzleString = shortenLinks
+            ? compressPuzzleDigits(puzzle.digits || puzzle)
+            : (puzzle.digits || puzzle);
+        return (
+            <div key={i} style={{width: "min-content"}}>
+                <a href={`./?s=${puzzleString}&d=${level}&i=${i+1}`} onClick={stopPropagation}>
+                    <SudokuMiniGrid puzzle={puzzle} showRatings={showRatings} />
+                </a>
+            </div>
+        );
+    })
+    const classes = `section ${collapsed ? 'collapsed' : ''}`;
+    const clickHandler = () => setCollapsed(old => !old);
+    return (
+        <div className={classes} onClick={clickHandler}>
+            {/* <h2>{levelName}</h2> */}
+            <div style={{display: "flex", flexWrap: "wrap", justifyContent: "space-around"}}>
+                {puzzleLinks}
+            </div>
+        </div>
+    );
+}
+
 
 function RecentlyShared({modalState}) {
     if (modalState.loadingFailed) {
@@ -87,9 +117,14 @@ function SavedPuzzlesButton({savedPuzzles, modalHandler}) {
     );
 }
 
-
 function ModalWelcome({modalState, modalHandler}) {
     const {savedPuzzles} = modalState;
+    const puzzleExamples = [
+        "070000043040009610800634900094052000358460020000800530080070091902100005007040802", 
+        "301086504046521070500000001400800002080347900009050038004090200008734090007208103",
+        "048301560360008090910670003020000935509010200670020010004002107090100008150834029",
+        "008317000004205109000040070327160904901450000045700800030001060872604000416070080",
+    ];
     const cancelHandler = () => modalHandler('cancel');
     const showPasteHandler = () => modalHandler('show-paste-modal');
     const twitterUrl = "https://twitter.com/SudokuExchange";
@@ -98,7 +133,7 @@ function ModalWelcome({modalState, modalHandler}) {
         : "";
     return (
         <div className="modal welcome">
-            <h1>Welcome to SudokuExchange</h1>
+            <h1>Welcome to Sudocool</h1>
             <p>You can get started by entering a new puzzle into a blank grid{orRestoreMsg}:</p>
             <div className="primary-buttons">
                 <span>
@@ -107,11 +142,10 @@ function ModalWelcome({modalState, modalHandler}) {
                     <SavedPuzzlesButton savedPuzzles={savedPuzzles} modalHandler={modalHandler} />
                 </span>
             </div>
-            <p>Or you can select a recently shared puzzle:</p>
-            <RecentlyShared modalState={modalState} />
-            <div id="welcome-footer">
-                <p>Follow <a href={twitterUrl} target="_blank" rel="noreferrer">@SudokuExchange</a> on Twitter for updates.</p>
-            </div>
+            {/* <p>Or you can select a recently shared puzzle:</p> */}
+            {/* <RecentlyShared modalState={modalState} /> */}
+            <p>Recently shared puzzles:</p>
+            <SudokuDatasetSelection puzzles={puzzleExamples}></SudokuDatasetSelection>
         </div>
     );
 }
