@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/sudocool/static/css/main.23408116.css",
+    "main.js": "/sudocool/static/js/main.5aa489b6.js",
+    "index.html": "/sudocool/index.html",
+    "main.23408116.css.map": "/sudocool/static/css/main.23408116.css.map",
+    "main.5aa489b6.js.map": "/sudocool/static/js/main.5aa489b6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.23408116.css",
+    "static/js/main.5aa489b6.js"
+  ]
+}
