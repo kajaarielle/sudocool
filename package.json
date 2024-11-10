@@ -48,7 +48,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": ".",
+  "homepage": "https://kajaarielle.github.io/sudocool",
   "proxy": "http://sudokuexchange.localhost:1080",
   "devDependencies": {
     "gh-pages": "^6.2.0"
