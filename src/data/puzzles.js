@@ -1,40 +1,56 @@
-// puzzles.js
 import puzzlesData from './puzzles.json'; 
-
-// Replace the existing getRandomPuzzles with the usePaginatedPuzzles hook
 import { useState, useCallback, useEffect } from 'react';
+import { analyzePuzzle, DIFFICULTY_LEVELS } from './sudoku-analyzer';
 
 export const PUZZLES = puzzlesData;
 
-export const usePaginatedPuzzles = (batchSize = 4) => {
+export const usePaginatedPuzzles = (batchSize = 4, difficulty = null) => {
   const [loadedPuzzles, setLoadedPuzzles] = useState([]);
   const [loadedIndices, setLoadedIndices] = useState(new Set());
   const [isLoading, setIsLoading] = useState(false);
-  const [isInitialized, setIsInitialized] = useState(false);  // Add this
+  const [isInitialized, setIsInitialized] = useState(false);
 
   const loadPuzzleBatch = useCallback(async () => {
     setIsLoading(true);
-    
+  
     return new Promise((resolve) => {
       setTimeout(() => {
         const newPuzzles = [];
         const newIndices = new Set(loadedIndices);
-        
-        while (newPuzzles.length < batchSize) {
+        const missingDifficulties = new Set(Object.values(DIFFICULTY_LEVELS));
+        console.log(DIFFICULTY_LEVELS)
+  
+        // Keep trying until all difficulty levels are covered
+        while (missingDifficulties.size > 0) {
           const randomIndex = Math.floor(Math.random() * PUZZLES.length);
-          
+  
           if (!newIndices.has(randomIndex)) {
-            newPuzzles.push(PUZZLES[randomIndex]);
-            newIndices.add(randomIndex);
+            const puzzle = PUZZLES[randomIndex];
+            const analyzedPuzzle = analyzePuzzle([puzzle])[0];
+  
+            if (missingDifficulties.has(analyzedPuzzle.difficulty)) {
+              newPuzzles.push(analyzedPuzzle);
+              missingDifficulties.delete(analyzedPuzzle.difficulty);
+              newIndices.add(randomIndex);
+            }
           }
         }
-        
+        newPuzzles.sort((a, b) => {
+          const difficultyOrder = {
+            "easy": 1,
+            "medium": 2,
+            "hard": 3,
+            "expert": 4
+          };
+          return difficultyOrder[a.difficulty] - difficultyOrder[b.difficulty];
+        });
+  
         setLoadedIndices(newIndices);
         setIsLoading(false);
         resolve(newPuzzles);
       }, 100);
     });
-  }, [loadedIndices, batchSize]);
+  }, [loadedIndices, batchSize, difficulty]);;
 
   const loadNextBatch = useCallback(async () => {
     if (!isLoading) {
