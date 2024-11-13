@@ -389,6 +389,7 @@ export const modelHelpers = {
                 .catch(error => setGrid(grid => {
                     const modalState = grid.get('modalState') || {};
                     if (modalState.modalType === MODAL_TYPE_WELCOME) {
+                        console.log('loading failed');
                         return grid.set('modalState', {
                             modalType: MODAL_TYPE_WELCOME,
                             loadingFailed: true,
@@ -430,13 +431,18 @@ export const modelHelpers = {
     },
 
     fetchExplainPlan: (grid, setGrid, retryInterval, maxRetries) => {
+        console.log('fetchExplainPlan')
         const modalState = grid.get('modalState');
         delete modalState.fetchRequired;    // Naughty, but we don't want a re-render
         const explainURL = '/explain/' + grid.get('initialDigits');
+        console.log(explainURL)
         let retryCount = 0;
+
         const setNewModalState = ({analysis, errorMessage}) => {
             setGrid(grid => {
+                console.log('set grid: ', grid)
                 const modalState = grid.get('modalState');
+                console.log(modalState, 'modalState')
                 if (!modalState || modalState.modalType !== MODAL_TYPE_HINT) {
                     return grid;  // user has moved on, so don't change anything
                 }
@@ -444,6 +450,7 @@ export const modelHelpers = {
                     modalType: MODAL_TYPE_HINT,
                     escapeAction: 'close',
                 };
+                console.log(analysis)
                 if (analysis) {
                     try {
                         const explainer = new SudokuExplainer(analysis);  // might throw exception
@@ -456,6 +463,7 @@ export const modelHelpers = {
                     }
                 }
                 if (errorMessage) {
+                    console.log('load fail')
                     newModalState.loadingFailed = true;
                     newModalState.errorMessage = errorMessage;
                 }
@@ -478,14 +486,17 @@ export const modelHelpers = {
                 setNewModalState({errorMessage: "Timed out waiting for hints from server."})
                 return;
             }
+            console.log(retryCount, maxRetries)
             fetch(explainURL)
                 .then(response => {
+                    console.log(response);
                     if (!response.ok) {
                         throw new Error(`${response.status} ${response.statusText}`);
                     }
                     return response.json();
                 })
                 .then(analysis => {
+                    console.log('analysis go')
                     if (analysis && analysis.ss) {
                         setNewModalState({analysis});
                     }
@@ -494,6 +505,7 @@ export const modelHelpers = {
                     }
                 })
                 .catch(error => {
+                    console.log('error')
                     setNewModalState({errorMessage: error.toString()});
                 });
         };
@@ -1287,6 +1299,7 @@ export const modelHelpers = {
     },
 
     applyHint: (grid, hint) => {
+        console.log(grid, hint)
         grid = hint.digitValue
             ? modelHelpers.applyNewDigitHint(grid, hint)
             : modelHelpers.applyCandidateEliminationHint(grid, hint);

@@ -44,7 +44,7 @@ function StatusBar ({
             {timer}
             <div className="status-bar-buttons">
                 <FullscreenButton />
-                {/* <HintButton menuHandler={menuHandler} /> */}
+                <HintButton menuHandler={menuHandler} />
                 <SettingsButton menuHandler={menuHandler} />
                 <MenuButton
                     initialDigits={initialDigits}

@@ -6,6 +6,9 @@ import { compressPuzzleDigits } from '../../lib/string-utils';
 import SudokuMiniGrid from '../sudoku-grid/sudoku-mini-grid';
 import Spinner from '../spinner/spinner';
 
+import { getRandomPuzzles, PUZZLES, usePaginatedPuzzles } from '../../data/puzzles'
+
+
 function stopPropagation (e) {
     e.stopPropagation();
 }
@@ -40,35 +43,68 @@ function RecentlySharedSection ({level, puzzles, showRatings, shortenLinks}) {
     );
 }
 
-function SudokuDatasetSelection ({level, puzzles, showRatings, shortenLinks}) {
-    const [collapsed, setCollapsed] = useState(true);
-    // const levelName = modelHelpers.difficultyLevelName(level);
-    if ( !puzzles || puzzles.length < 1) {
-        return null;
+// SudokuDatasetSelection stays in the same file
+function SudokuDatasetSelection({
+    level,
+    puzzles,
+    showRatings,
+    shortenLinks,
+    isLoading,
+    onLoadMore,
+    onRefresh
+  }) {
+    const [collapsed, setCollapsed] = useState(false);
+  
+    if (!puzzles || puzzles.length < 1) {
+      return null;
     }
+  
     const puzzleLinks = puzzles.map((puzzle, i) => {
-        const puzzleString = shortenLinks
-            ? compressPuzzleDigits(puzzle.digits || puzzle)
-            : (puzzle.digits || puzzle);
-        return (
-            <div key={i} style={{width: "min-content"}}>
-                <a href={`./?s=${puzzleString}&d=${level}&i=${i+1}`} onClick={stopPropagation}>
-                    <SudokuMiniGrid puzzle={puzzle} showRatings={showRatings} />
-                </a>
-                <p style={{textAlign: "center", marginTop: "0px", fontSize: "small"}}>Sudoku {i+1}</p>
-            </div>
-        );
-    })
+      const puzzleString = shortenLinks
+        ? compressPuzzleDigits(puzzle.digits || puzzle)
+        : (puzzle.digits || puzzle);
+  
+      return (
+        <div key={i} style={{ width: "min-content" }}>
+            <a href={`./?s=${puzzleString}&d=${level}&i=${i + 1}`}
+            onClick={stopPropagation}
+          >
+            <SudokuMiniGrid puzzle={puzzle} showRatings={showRatings} />
+          </a>
+          <p style={{ textAlign: "center", marginTop: "0px", fontSize: "small" }}>
+            Sudoku {i + 1}
+          </p>
+        </div>
+      );
+    });
+  
     const classes = `section ${collapsed ? 'collapsed' : ''}`;
     const clickHandler = () => setCollapsed(old => !old);
+  
     return (
-        <div className={classes} onClick={clickHandler}>
-            <div style={{display: "flex", flexWrap: "wrap", justifyContent: "space-around"}}>
-                {puzzleLinks}
-            </div>
+      <div className={classes}>
+        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around" }}>
+          {puzzleLinks}
         </div>
+        <div className="puzzle-controls" onClick={stopPropagation}>
+          <button
+            className="secondary"
+            onClick={onRefresh}
+            disabled={isLoading}
+          >
+            Refresh Puzzles
+          </button>
+          <button
+            className="primary"
+            onClick={onLoadMore}
+            disabled={isLoading}
+          >
+            {isLoading ? 'Loading...' : 'Load More Puzzles'}
+          </button>
+        </div>
+      </div>
     );
-}
+  }
 
 
 function RecentlyShared({modalState}) {
@@ -119,12 +155,13 @@ function SavedPuzzlesButton({savedPuzzles, modalHandler}) {
 
 function ModalWelcome({modalState, modalHandler}) {
     const {savedPuzzles} = modalState;
-    const puzzleExamples = [
-        "070000043040009610800634900094052000358460020000800530080070091902100005007040802", 
-        "301086504046521070500000001400800002080347900009050038004090200008734090007208103",
-        "048301560360008090910670003020000935509010200670020010004002107090100008150834029",
-        "008317000004205109000040070327160904901450000045700800030001060872604000416070080",
-    ];
+    const {
+        puzzles,
+        isLoading,
+        loadNextBatch,
+        resetPuzzles
+      } = usePaginatedPuzzles(4);
+    const getPuzzles = getRandomPuzzles(4)
     const cancelHandler = () => modalHandler('cancel');
     const showPasteHandler = () => modalHandler('show-paste-modal');
     const twitterUrl = "https://twitter.com/SudokuExchange";
@@ -145,7 +182,12 @@ function ModalWelcome({modalState, modalHandler}) {
             {/* <p>Or you can select a recently shared puzzle:</p> */}
             {/* <RecentlyShared modalState={modalState} /> */}
             <p>Recently shared puzzles:</p>
-            <SudokuDatasetSelection puzzles={puzzleExamples}></SudokuDatasetSelection>
+            <SudokuDatasetSelection
+                puzzles={puzzles}
+                isLoading={isLoading}
+                onLoadMore={loadNextBatch}
+                onRefresh={resetPuzzles}
+            />
         </div>
     );
 }

@@ -18,6 +18,9 @@
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.4.0",
     "@testing-library/user-event": "14.4.3",
+    "convert-csv-to-json": "^2.49.0",
+    "csv-parse": "^5.5.6",
+    "http-proxy-middleware": "^3.0.3",
     "immutable": "4.1.0",
     "qrcode.react": "3.1.0",
     "react": "18.2.0",
@@ -51,6 +54,7 @@
   "homepage": "https://kajaarielle.github.io/sudocool",
   "proxy": "http://sudokuexchange",
   "devDependencies": {
+    "csv-loader": "^3.0.5",
     "gh-pages": "^6.2.0"
   }
 }

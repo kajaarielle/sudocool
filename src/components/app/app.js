@@ -499,7 +499,7 @@ function App() {
     if (modalState) {
         if (modalState.fetchRequired) {
             if (modalState.modalType === MODAL_TYPE_WELCOME) {
-                modelHelpers.fetchRecentlyShared(grid, setGrid, FETCH_DELAY);
+                // modelHelpers.fetchRecentlyShared(grid, setGrid, FETCH_DELAY);
             }
             else if (modalState.modalType === MODAL_TYPE_HINT) {
                 modelHelpers.fetchExplainPlan(grid, setGrid, RETRY_INTERVAL, MAX_RETRIES);

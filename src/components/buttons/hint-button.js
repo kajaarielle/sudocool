@@ -8,12 +8,13 @@ export default function HintButton ({menuHandler}) {
             e.preventDefault();
             const menuAction = 'show-hint-modal';
             menuHandler(menuAction);
+            console.log('click hint ')
         },
         [menuHandler]
     );
 
     return (
-        <button disabled={true} id="hint-button" type="button" title="Hint" onClick={clickHandler}>
+        <button disabled={false} id="hint-button" type="button" title="Hint" onClick={clickHandler}>
             <ButtonIcon name="hint" />
         </button>
     )
