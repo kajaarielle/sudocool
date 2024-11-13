@@ -82,8 +82,8 @@ function SudokuDatasetSelection({
     const clickHandler = () => setCollapsed(old => !old);
   
     return (
-      <div className={classes}>
-        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around" }}>
+      <div className={classes} style={{marginBottom: "40px" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-around"}}>
           {puzzleLinks}
         </div>
         <div className="puzzle-controls" onClick={stopPropagation}>
