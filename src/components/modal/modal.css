@@ -130,15 +130,16 @@
 }
 
 .landing-page {
-  max-width: 100dvw;
   width: 100dvw;
+  min-width: 100dvw;
+  max-width: 100dvw;
   height: 100dvh;
+  min-height: 100dvh;
   position: relative;
   box-sizing: border-box;
   overflow-y: auto;
   color: var(--modal-text-color);
   background-color: var(--modal-bg-color);
-  border-radius: 0.3em;
   line-height: 130%;
   box-shadow: var(--modal-box-shadow);
   display: flex;
