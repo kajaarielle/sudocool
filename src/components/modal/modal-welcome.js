@@ -100,7 +100,6 @@ function SudokuDatasetSelection({
             width: "-webkit-fill-available",
           }}
         >
-          {/* <div> */}
           <p
             style={{
               margin: "0px",
@@ -116,8 +115,7 @@ function SudokuDatasetSelection({
           </p>
           {/* <p style={{ margin: "0px", fontSize: "1rem", width: "200px", textOverflow: "ellipsis", overflow: "hidden"}}>
             {formattedTechniques}
-          </p> */}
-          {/* </div> */}
+          </p>  */}
           <SudokuMiniGrid puzzle={puzzle} showRatings={showRatings} />
         </a>
       </div>

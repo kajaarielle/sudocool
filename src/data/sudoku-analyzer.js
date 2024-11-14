@@ -10,9 +10,8 @@ export const DIFFICULTY_LEVELS = {
 const DIFFICULTY_THRESHOLDS = {
   EASY: { minGivens: 36, minTechniques: 0, maxTechniques: 2, maxSteps: 15 },
   MEDIUM: { minGivens: 32, minTechniques: 2, maxTechniques: 4, maxSteps: 30 },
-  HARD: { minGivens: 26, minTechniques: 3, maxTechniques: 99, maxSteps: 50 },
-  EXPERT: { minGivens: 25, minTechniques: 4, maxTechniques: 99, maxSteps: 50 },
-  // Expert is anything more difficult than HARD
+  HARD: { minGivens: 26, minTechniques: 4, maxTechniques: 99, maxSteps: 60 },
+  EXPERT: {},
 };
 
 // Solving techniques and their difficulty weights
@@ -244,14 +243,11 @@ export class SudokuAnalyzer {
     ) {
       return DIFFICULTY_LEVELS.MEDIUM;
     } else if (
-      givens >= DIFFICULTY_THRESHOLDS.HARD.minGivens &&
-      techniqueScore <= DIFFICULTY_THRESHOLDS.HARD.maxTechniques
+      techniqueScore <= DIFFICULTY_THRESHOLDS.HARD.maxTechniques &&
+      givens >= DIFFICULTY_THRESHOLDS.HARD.minGivens
     ) {
       return DIFFICULTY_LEVELS.HARD;
-    } else if (
-      givens >= DIFFICULTY_THRESHOLDS.EXPERT.minGivens &&
-      techniqueScore <= DIFFICULTY_THRESHOLDS.EXPERT.maxTechniques
-    ) {
+    } else {
       return DIFFICULTY_LEVELS.EXPERT;
     }
   }
