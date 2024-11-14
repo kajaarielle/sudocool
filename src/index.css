@@ -92,7 +92,7 @@
     --grid-line-width: 2;
     --grid-line-width-bold: 5;
     --hint-hot-spot-highlight-line-width: 7;
-    --vkbd-bg-fill-color: #cccccc;
+    --vkbd-bg-fill-color: #e3e3e3;
     --vkbd-button-fill-color: #ffffff;
     --vkbd-button-text-color: #333333;
     --vkbd-completed-button-text-color: #4cce4c;
@@ -190,15 +190,15 @@
     --button-text-color: #333333;
     --grid-line-width: 2;
     --grid-line-width-bold: 5;
-    --vkbd-bg-fill-color: #262b32;
+    --vkbd-bg-fill-color: #222427;
     --vkbd-button-fill-color: var(--background-color);
-    --vkbd-button-text-color: #939191;
+    --vkbd-button-text-color: #b4b5bb;
     --vkbd-completed-button-text-color: #60ac60;
     --vkbd-mode-panel-fill-color: var(--background-color);
     --vkbd-mode-text-color: #8a8a8a;
-    --vkbd-active-mode-fill-color: #aaa9a9;
-    --vkbd-mode-icon-fill-color: #9d9a9a;
-    --vkbd-active-mode-icon-fill-color: #484747;
+    --vkbd-active-mode-fill-color: #a0a9c8;
+    --vkbd-mode-icon-fill-color: #b3b4b6;
+    --vkbd-active-mode-icon-fill-color: #262626;
     --spinner-color: #777777;
 }
 

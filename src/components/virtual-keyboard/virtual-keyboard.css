@@ -53,7 +53,7 @@
 }
 
 .vkbd .input-mode-color rect {
-    opacity: 0.7;
+    opacity: 1;
 }
 
 .vkbd .input-mode-color.active rect {

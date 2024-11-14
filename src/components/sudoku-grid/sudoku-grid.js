@@ -143,7 +143,7 @@ function useCellTouch (inputHandler) {
 
 function SudokuGrid({grid, gridId, dimensions, isPaused, mouseDownHandler, mouseOverHandler, inputHandler}) {
     const cellSize = 100;
-    const marginSize = 50;
+    const marginSize = 20;
     const fontSize = 72;
     const dim = useMemo(() => calculateGridDimensions(cellSize, marginSize, fontSize), [cellSize, marginSize, fontSize]);
     const settings = grid.get('settings');
