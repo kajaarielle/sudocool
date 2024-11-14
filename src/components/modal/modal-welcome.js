@@ -71,23 +71,28 @@ function SudokuDatasetSelection({
     return (
       <div
         key={i}
-        style={{ minWidth: "140px", display: "flex", flexDirection: "column" }}
+        style={{ minWidth: "140px", display: "flex", flexDirection: "row" }}
       >
         <a
           href={`./?s=${puzzleString}&d=${puzzle.difficulty}&i=${i + 1}`}
           onClick={stopPropagation}
           style={{
             display: "flex",
-            flexDirection: "column",
+            flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",
+            width: "-webkit-fill-available",
           }}
         >
           <p
             style={{
               margin: "0px",
-              textTransform: "uppercase",
+              textTransform: "capitalize",
               textAlign: "center",
+              flex: 1,
+              maxWidth: "25%",
+              fontSize: "1.5rem",
+              fontWeight: "500",
             }}
           >
             {puzzle.difficulty}
@@ -110,20 +115,22 @@ function SudokuDatasetSelection({
     <div
       className={classes}
       style={{
-        marginBottom: "40px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
       }}
     >
       <div className="puzzle-grid">{puzzleLinks}</div>
-      <div className="puzzle-controls" onClick={stopPropagation}>
+      <div
+        className="puzzle-controls"
+        onClick={stopPropagation}
+      >
         <button className="secondary" onClick={onRefresh} disabled={isLoading}>
           Refresh Puzzles
         </button>
-        <button className="primary" onClick={onLoadMore} disabled={isLoading}>
+        {/* <button className="primary" onClick={onLoadMore} disabled={isLoading}>
           {isLoading ? "Loading..." : "Load More Puzzles"}
-        </button>
+        </button> */}
       </div>
     </div>
   );
@@ -165,7 +172,7 @@ function SavedPuzzlesButton({ savedPuzzles, modalHandler }) {
   }
   const savedPuzzlesHandler = () => modalHandler("show-saved-puzzles-modal");
   return (
-    <button className="primary new-puzzle" onClick={savedPuzzlesHandler}>
+    <button className="new-puzzle" onClick={savedPuzzlesHandler}>
       Resume a puzzle
       <CountBadge count={savedPuzzles.length} />
     </button>
@@ -189,7 +196,7 @@ function ModalWelcome({ modalState, modalHandler }) {
     <div className="landing-page">
       <header className="my-custom-header">
         <div className="breathe-animation">
-        <span>Sudocool</span>
+          <span>Sudocool</span>
         </div>
       </header>
       <div className="page-content">
@@ -203,16 +210,18 @@ function ModalWelcome({ modalState, modalHandler }) {
         </div>
         {/* <p>Or you can select a recently shared puzzle:</p> */}
         {/* <RecentlyShared modalState={modalState} /> */}
-        <h3 style={{ textAlign: "center" }}>SUDOKU PUZZLES</h3>
+        {/* <h3 style={{ textAlign: "center" }}>Normal sudoku</h3> */}
         <SudokuDatasetSelection
           puzzles={puzzles}
           isLoading={isLoading}
           onLoadMore={loadNextBatch}
           onRefresh={resetPuzzles}
         />
-        <div style={{ height: "80px" }}></div>
+      </div>
+      <div className="footer">
+
         <div>
-          <p style={{ textAlign: "center" }}>
+          <p style={{ textAlign: "center", color: "white" }}>
             {/* You can get started by entering a new puzzle into a blank grid */}
             {orRestoreMsg}:
           </p>
@@ -223,8 +232,6 @@ function ModalWelcome({ modalState, modalHandler }) {
             />
           </div>
         </div>
-      </div>
-      <div className="footer">
       </div>
     </div>
   );

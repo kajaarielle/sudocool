@@ -147,31 +147,33 @@
 
 .puzzle-grid {
   display: grid;
+  grid-template-columns: 1fr;
   gap: 20px;
   width: -webkit-fill-available;
   max-width: 1200px;
 }
 
-/* For small screens */
-@media (max-width: 400px) {
+a p {
+  color: black;
+}
+
+/* @media (max-width: 400px) {
   .puzzle-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-/* For medium screens */
 @media (min-width: 401px) and (max-width: 768px) {
   .puzzle-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-/* For large screens */
 @media (min-width: 769px) {
   .puzzle-grid {
     grid-template-columns: repeat(4, 1fr);
   }
-}
+} */
 
 .count-badge {
   display: inline-grid;
@@ -198,8 +200,8 @@
 }
 
 .landing-page .footer {
-  min-height: 120px;
-  background-color: lightgray;
+  min-height: 160px;
+  background-color: rgb(88, 88, 88);
 }
 
 .landing-page .spinner {
@@ -403,6 +405,38 @@
   gap: 1rem;
   margin-top: 1rem;
 }
+
+.landing-page button {
+  border: none;
+  color: var(--modal-button-text-color);
+  background-color: var(--modal-button-bg-color);
+  min-width: 5em;
+  padding: 0.4em 0.8em;
+  font-size: 100%;
+  font-weight: bold;
+  border-radius: 0.15em;
+}
+
+.landing-page button:disabled {
+  color: #99999988;
+  cursor: not-allowed;
+}
+
+.landing-page button:disabled:hover {
+  box-shadow: none;
+}
+
+.landing-page button.danger {
+  color: var(--modal-button-danger-text-color);
+  background-color: var(--modal-button-danger-bg-color);
+}
+
+.landing-page button.primary,
+.landing-page a.btn.primary {
+  color: var(--modal-button-primary-text-color);
+  background-color: var(--modal-button-primary-bg-color);
+}
+
 
 .modal.resume-restart {
   width: 26em;
