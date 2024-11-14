@@ -47,8 +47,8 @@
 }
 
 .status-bar button {
-    width: 6vh;
-    height: 6vh;
+    width: 5vh;
+    height: 5vh;
     background-color: transparent;
     margin: 0.8vh 0.8vh 0 0;
     padding: 0.5vh;
@@ -58,8 +58,6 @@
 }
 
 .portrait .status-bar button {
-    margin-right: 0;
-    padding: 0.3vh;
 }
 
 .status-bar button:hover,

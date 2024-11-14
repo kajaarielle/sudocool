@@ -12,12 +12,8 @@ const stopPropagation = (e) => e.stopPropagation();
 
 function SiteLink () {
     return (
-        <div className="site-link">
-            <a>
-                <svg className="site-domain-image" version="1.1" viewBox="0 0 650 120" title="Sudocool">
-                    {/* <use href="#site-domain" /> */}
-                </svg>
-            </a>
+        <div className="breathe-animation bar-logo">
+            <span className='paused'>Sudocool</span>
         </div>
     );
 }
