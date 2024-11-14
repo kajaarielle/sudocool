@@ -13,7 +13,9 @@ const stopPropagation = (e) => e.stopPropagation();
 function SiteLink () {
     return (
         <div className="breathe-animation bar-logo">
+            <a href='/'>
             <span className='paused'>Sudocool</span>
+            </a>
         </div>
     );
 }
@@ -40,7 +42,7 @@ function StatusBar ({
             {timer}
             <div className="status-bar-buttons">
                 <FullscreenButton />
-                <HintButton menuHandler={menuHandler} />
+                {/* <HintButton menuHandler={menuHandler} /> */}
                 <SettingsButton menuHandler={menuHandler} />
                 <MenuButton
                     initialDigits={initialDigits}

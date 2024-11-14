@@ -68,21 +68,20 @@ function SudokuDatasetSelection({
       ? compressPuzzleDigits(puzzle.digits || puzzle)
       : puzzle.digits || puzzle;
 
-      function formatTechniques(techniques) {
-        // Create an array to store the techniques as strings
-        const techniqueStrings = [];
-      
-        // Iterate over each technique and add it to the array
-        for (const technique in techniques) {
-          techniqueStrings.push(techniques[technique]);
-        }
-      
-        // Join the techniques with spaces
-        return techniqueStrings.join(' ');
+    function formatTechniques(techniques) {
+      // Create an array to store the techniques as strings
+      const techniqueStrings = [];
+
+      // Iterate over each technique and add it to the array
+      for (const technique in techniques) {
+        techniqueStrings.push(techniques[technique]);
       }
 
-      const formattedTechniques = formatTechniques(puzzle.techniques);
+      // Join the techniques with spaces
+      return techniqueStrings.join(" ");
+    }
 
+    const formattedTechniques = formatTechniques(puzzle.techniques);
 
     return (
       <div
@@ -106,10 +105,10 @@ function SudokuDatasetSelection({
               textTransform: "capitalize",
               textAlign: "center",
               flex: 1,
-              maxWidth: "180px",
+              maxWidth: "140px",
               fontSize: "1.5rem",
               fontWeight: "500",
-              color: "var(--text-color)"
+              color: "var(--text-color)",
             }}
           >
             {puzzle.difficulty}
@@ -133,20 +132,21 @@ function SudokuDatasetSelection({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        height: "100%",
       }}
     >
       <div className="puzzle-grid">{puzzleLinks}</div>
-      <div
-        className="puzzle-controls"
-        onClick={stopPropagation}
-      >
+      <div className="puzzle-controls" onClick={stopPropagation}>
         <button className="secondary" onClick={onRefresh} disabled={isLoading}>
           Refresh Puzzles
         </button>
         {/* <button className="primary" onClick={onLoadMore} disabled={isLoading}>
           {isLoading ? "Loading..." : "Load More Puzzles"}
-        </button> */}
+          </button> */}
       </div>
+      <p style={{ textAlign: "center" }}>
+        Warning: Difficulties currently not correct
+      </p>
     </div>
   );
 }
@@ -209,11 +209,13 @@ function ModalWelcome({ modalState, modalHandler }) {
 
   return (
     <div className="landing-page">
-      <header className="my-custom-header">
-        <div className="breathe-animation">
-          <span>Sudocool</span>
+      <div className="">
+        <div className="breathe-animation bar-logo">
+          <a href="/">
+            <span>Sudocool</span>
+          </a>
         </div>
-      </header>
+      </div>
       <div className="page-content">
         <div className="buttons-horizontal">
           {/* <button className="primary new-puzzle" onClick={cancelHandler}>
@@ -225,7 +227,6 @@ function ModalWelcome({ modalState, modalHandler }) {
         </div>
         {/* <p>Or you can select a recently shared puzzle:</p> */}
         {/* <RecentlyShared modalState={modalState} /> */}
-        <p style={{ textAlign: "center" }}>Warning: Difficulties currently not correct</p>
         <SudokuDatasetSelection
           puzzles={puzzles}
           isLoading={isLoading}
@@ -234,18 +235,15 @@ function ModalWelcome({ modalState, modalHandler }) {
         />
       </div>
       <div className="footer">
-
-        <div>
-          <p style={{ textAlign: "center", color: "white" }}>
-            {/* You can get started by entering a new puzzle into a blank grid */}
-            {orRestoreMsg}:
-          </p>
-          <div className="buttons-horizontal">
-            <SavedPuzzlesButton
-              savedPuzzles={savedPuzzles}
-              modalHandler={modalHandler}
-            />
-          </div>
+        <p style={{ textAlign: "center", color: "white" }}>
+          {/* You can get started by entering a new puzzle into a blank grid */}
+          {orRestoreMsg}:
+        </p>
+        <div className="buttons-horizontal">
+          <SavedPuzzlesButton
+            savedPuzzles={savedPuzzles}
+            modalHandler={modalHandler}
+          />
         </div>
       </div>
     </div>
