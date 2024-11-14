@@ -30,15 +30,11 @@ function DifficultyIndicator({ difficulty, showRatings }) {
         className="difficulty-bar"
         x="50"
         y="990"
-        width={barWidth}
-        height={barHeight}
       />
       {textContent}
       <rect
         x="50"
         y="970"
-        width={barWidth + 10}
-        height={barHeight + 125}
         fill="transparent"
       >
         <title>Difficulty rating: {difficulty}</title>
@@ -47,7 +43,7 @@ function DifficultyIndicator({ difficulty, showRatings }) {
   );
 }
 
-function SudokuMiniGrid({ puzzle, size = "120px", showRatings }) {
+function SudokuMiniGrid({ puzzle, miniMinWidth = "120px", showRatings }) {
   const cellSize = 100;
   const marginSize = 50;
   const digits = typeof puzzle === "string" ? puzzle : puzzle.digits;
@@ -78,9 +74,9 @@ function SudokuMiniGrid({ puzzle, size = "120px", showRatings }) {
         })
       : [];
   return (
-    <div className="sudoku-grid mini" style={{ width: size }}>
+    <div className="sudoku-grid mini" style={{ minWidth: miniMinWidth, width: "-webkit-fill-available", maxWidth: "200px"}}>
       <svg version="1.1" viewBox="0 0 1000 1100">
-        <rect className="grid-bg" width="100%" height="100%" />
+        <rect className="grid-bg" />
         {puzzleDigits}
         <GridLines cellSize={cellSize} marginSize={marginSize} />
         <DifficultyIndicator
