@@ -74,15 +74,15 @@ function SudokuMiniGrid({ puzzle, miniMinWidth = "120px", showRatings }) {
         })
       : [];
   return (
-    <div className="sudoku-grid mini" style={{ minWidth: miniMinWidth, width: "-webkit-fill-available", maxWidth: "200px"}}>
-      <svg version="1.1" viewBox="0 0 1000 1100">
+    <div className="sudoku-grid mini" style={{ minWidth: miniMinWidth, width: "-webkit-fill-available", maxWidth: "240px"}}>
+      <svg version="1.1" viewBox="0 0 1000 1000">
         <rect className="grid-bg" />
         {puzzleDigits}
         <GridLines cellSize={cellSize} marginSize={marginSize} />
-        <DifficultyIndicator
+        {/* <DifficultyIndicator
           difficulty={difficulty}
           showRatings={showRatings}
-        />
+        /> */}
       </svg>
     </div>
   );

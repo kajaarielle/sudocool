@@ -69,17 +69,36 @@ function SudokuDatasetSelection({
       : puzzle.digits || puzzle;
 
     return (
-      <div key={i} style={{ minWidth: "140px", display: "flex", flexDirection: "column" }}>
+      <div
+        key={i}
+        style={{ minWidth: "140px", display: "flex", flexDirection: "column" }}
+      >
         <a
           href={`./?s=${puzzleString}&d=${puzzle.difficulty}&i=${i + 1}`}
           onClick={stopPropagation}
-          style={{display: "flex", flexDirection: "row", justifyContent: "center"}}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         >
+          <p
+            style={{
+              margin: "0px",
+              textTransform: "uppercase",
+              textAlign: "center",
+            }}
+          >
+            {puzzle.difficulty}
+          </p>
           <SudokuMiniGrid puzzle={puzzle} showRatings={showRatings} />
+          {/* <p
+            style={{ textAlign: "center", marginTop: "0px", fontSize: "small" }}
+          >
+            Sudoku {i + 1} <br />
+          </p> */}
         </a>
-        <p style={{ textAlign: "center", marginTop: "0px", fontSize: "small" }}>
-          Sudoku {i + 1} ({puzzle.difficulty})
-        </p>
       </div>
     );
   });
@@ -88,10 +107,16 @@ function SudokuDatasetSelection({
   const clickHandler = () => setCollapsed((old) => !old);
 
   return (
-    <div className={classes} style={{ marginBottom: "40px", display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <div className="puzzle-grid">
-        {puzzleLinks}
-      </div>
+    <div
+      className={classes}
+      style={{
+        marginBottom: "40px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <div className="puzzle-grid">{puzzleLinks}</div>
       <div className="puzzle-controls" onClick={stopPropagation}>
         <button className="secondary" onClick={onRefresh} disabled={isLoading}>
           Refresh Puzzles
@@ -161,36 +186,46 @@ function ModalWelcome({ modalState, modalHandler }) {
       : "";
 
   return (
-    <div className="modal welcome">
+    <div className="landing-page">
       <header className="my-custom-header">
-        <h1 className="animated-heading">Sudocool</h1>
+        <div className="breathe-animation">
+        <span>Sudocool</span>
+        </div>
       </header>
-      <p style={{textAlign: "center"}}>
-        {/* You can get started by entering a new puzzle into a blank grid */}
-        {orRestoreMsg}:
-      </p>
-      <div className="buttons-horizontal">
+      <div className="page-content">
+        <div className="buttons-horizontal">
           {/* <button className="primary new-puzzle" onClick={cancelHandler}>
             Enter a new puzzle
           </button>
           <button className="primary new-puzzle" onClick={showPasteHandler}>
             Paste a new puzzle
           </button> */}
-          <SavedPuzzlesButton
-            savedPuzzles={savedPuzzles}
-            modalHandler={modalHandler}
-          />
+        </div>
+        {/* <p>Or you can select a recently shared puzzle:</p> */}
+        {/* <RecentlyShared modalState={modalState} /> */}
+        <h3 style={{ textAlign: "center" }}>SUDOKU PUZZLES</h3>
+        <SudokuDatasetSelection
+          puzzles={puzzles}
+          isLoading={isLoading}
+          onLoadMore={loadNextBatch}
+          onRefresh={resetPuzzles}
+        />
+        <div style={{ height: "80px" }}></div>
+        <div>
+          <p style={{ textAlign: "center" }}>
+            {/* You can get started by entering a new puzzle into a blank grid */}
+            {orRestoreMsg}:
+          </p>
+          <div className="buttons-horizontal">
+            <SavedPuzzlesButton
+              savedPuzzles={savedPuzzles}
+              modalHandler={modalHandler}
+            />
+          </div>
+        </div>
       </div>
-      <div style={{height: "80px"}}></div>
-      {/* <p>Or you can select a recently shared puzzle:</p> */}
-      {/* <RecentlyShared modalState={modalState} /> */}
-      <h3 style={{textAlign: "center"}}>SUDOKU PUZZLES</h3>
-      <SudokuDatasetSelection
-        puzzles={puzzles}
-        isLoading={isLoading}
-        onLoadMore={loadNextBatch}
-        onRefresh={resetPuzzles}
-      />
+      <div className="footer">
+      </div>
     </div>
   );
 }
