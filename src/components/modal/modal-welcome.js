@@ -213,7 +213,7 @@ function ModalWelcome({ modalState, modalHandler }) {
     <div className="landing-page">
       <div className="">
         <div className="breathe-animation bar-logo">
-          <a href="/">
+          <a href="/sudocool/">
             <span>Sudocool</span>
           </a>
         </div>

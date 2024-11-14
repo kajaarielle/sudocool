@@ -13,7 +13,7 @@ const stopPropagation = (e) => e.stopPropagation();
 function SiteLink () {
     return (
         <div className="breathe-animation bar-logo">
-            <a href='/'>
+            <a href="/sudocool/">
             <span className='paused'>Sudocool</span>
             </a>
         </div>
