@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/sudocool/static/css/main.50c879d1.css",
-    "main.js": "/sudocool/static/js/main.3d3c9725.js",
+    "main.css": "/sudocool/static/css/main.98b7e77a.css",
+    "main.js": "/sudocool/static/js/main.89e5e6ec.js",
     "index.html": "/sudocool/index.html",
-    "main.50c879d1.css.map": "/sudocool/static/css/main.50c879d1.css.map",
-    "main.3d3c9725.js.map": "/sudocool/static/js/main.3d3c9725.js.map"
+    "main.98b7e77a.css.map": "/sudocool/static/css/main.98b7e77a.css.map",
+    "main.89e5e6ec.js.map": "/sudocool/static/js/main.89e5e6ec.js.map"
   },
   "entrypoints": [
-    "static/css/main.50c879d1.css",
-    "static/js/main.3d3c9725.js"
+    "static/css/main.98b7e77a.css",
+    "static/js/main.89e5e6ec.js"
   ]
 }
