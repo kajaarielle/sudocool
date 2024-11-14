@@ -109,6 +109,7 @@ function SudokuDatasetSelection({
               maxWidth: "180px",
               fontSize: "1.5rem",
               fontWeight: "500",
+              color: "var(--text-color)"
             }}
           >
             {puzzle.difficulty}
@@ -224,7 +225,7 @@ function ModalWelcome({ modalState, modalHandler }) {
         </div>
         {/* <p>Or you can select a recently shared puzzle:</p> */}
         {/* <RecentlyShared modalState={modalState} /> */}
-        {/* <h3 style={{ textAlign: "center" }}>Normal sudoku</h3> */}
+        <p style={{ textAlign: "center" }}>Warning: Difficulties currently not correct</p>
         <SudokuDatasetSelection
           puzzles={puzzles}
           isLoading={isLoading}

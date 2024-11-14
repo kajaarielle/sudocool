@@ -106,11 +106,11 @@
 
 :root .dark {
     --background-color: #171717;
-    --text-color: #9d9a9a;
+    --text-color: #e1e1e1;
     --link-text-color: #acddfb;
     --link-bg-color: transparent;
-    --link-hover-text-color: #acddfb;
-    --link-hover-bg-color: #535353;
+    --link-hover-text-color: #ededed;
+    --link-hover-bg-color: #414141;
     --status-bar-text-color: #dfdfdf;
     --status-bar-bg: linear-gradient(#525252, #1e1e1e);
     --status-bar-border-color: #000000;
@@ -127,8 +127,8 @@
     --modal-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
     --modal-backdrop-color: #00000088;
     --modal-heading-underline-color: #888888;
-    --modal-button-text-color: #cabdbd;
-    --modal-button-bg-color: #726c6d;
+    --modal-button-text-color: #2b2b2b;
+    --modal-button-bg-color: #e1e1e1;
     --modal-button-danger-text-color: #cabdbd;
     --modal-button-danger-bg-color: #ce4f58;
     --button-hover-shadow: 0 0 2px #ffffff;
@@ -238,10 +238,10 @@ a:hover {
     color: var(--link-hover-text-color);
     background-color: var(--link-hover-bg-color);
     box-shadow: 
-    inset 0 -2px 0 0 rgba(0, 0, 0, 0.5),
-    inset 0 2px 0 0 rgba(0, 0, 0, 0.5),
-    inset -2px 0 0 0 rgba(0, 0, 0, 0.5),
-    inset 2px 0 0 0 rgba(0, 0, 0, 0.5);
+    inset 0 -2px 0 0 var(--text-color),
+    inset 0 2px 0 0 var(--text-color),
+    inset -2px 0 0 0 var(--text-color),
+    inset 2px 0 0 0 var(--text-color);
 }
 
 .sudoku-app {
