@@ -18,7 +18,6 @@ export const usePaginatedPuzzles = (batchSize = 4, difficulty = null) => {
         const newPuzzles = [];
         const newIndices = new Set(loadedIndices);
         const missingDifficulties = new Set(Object.values(DIFFICULTY_LEVELS));
-        console.log(DIFFICULTY_LEVELS)
   
         // Keep trying until all difficulty levels are covered
         while (missingDifficulties.size > 0) {
@@ -44,6 +43,7 @@ export const usePaginatedPuzzles = (batchSize = 4, difficulty = null) => {
           };
           return difficultyOrder[a.difficulty] - difficultyOrder[b.difficulty];
         });
+        console.log(newPuzzles)
   
         setLoadedIndices(newIndices);
         setIsLoading(false);

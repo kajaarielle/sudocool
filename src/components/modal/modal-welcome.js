@@ -68,10 +68,26 @@ function SudokuDatasetSelection({
       ? compressPuzzleDigits(puzzle.digits || puzzle)
       : puzzle.digits || puzzle;
 
+      function formatTechniques(techniques) {
+        // Create an array to store the techniques as strings
+        const techniqueStrings = [];
+      
+        // Iterate over each technique and add it to the array
+        for (const technique in techniques) {
+          techniqueStrings.push(techniques[technique]);
+        }
+      
+        // Join the techniques with spaces
+        return techniqueStrings.join(' ');
+      }
+
+      const formattedTechniques = formatTechniques(puzzle.techniques);
+
+
     return (
       <div
         key={i}
-        style={{ minWidth: "140px", display: "flex", flexDirection: "row" }}
+        style={{ minWidth: "140px", display: "flex", flexDirection: "column" }}
       >
         <a
           href={`./?s=${puzzleString}&d=${puzzle.difficulty}&i=${i + 1}`}
@@ -84,25 +100,25 @@ function SudokuDatasetSelection({
             width: "-webkit-fill-available",
           }}
         >
+          {/* <div> */}
           <p
             style={{
               margin: "0px",
               textTransform: "capitalize",
               textAlign: "center",
               flex: 1,
-              maxWidth: "25%",
+              maxWidth: "180px",
               fontSize: "1.5rem",
               fontWeight: "500",
             }}
           >
             {puzzle.difficulty}
           </p>
-          <SudokuMiniGrid puzzle={puzzle} showRatings={showRatings} />
-          {/* <p
-            style={{ textAlign: "center", marginTop: "0px", fontSize: "small" }}
-          >
-            Sudoku {i + 1} <br />
+          {/* <p style={{ margin: "0px", fontSize: "1rem", width: "200px", textOverflow: "ellipsis", overflow: "hidden"}}>
+            {formattedTechniques}
           </p> */}
+          {/* </div> */}
+          <SudokuMiniGrid puzzle={puzzle} showRatings={showRatings} />
         </a>
       </div>
     );
