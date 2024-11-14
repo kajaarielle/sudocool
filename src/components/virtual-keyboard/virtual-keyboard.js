@@ -1,6 +1,6 @@
 import { useRef, useCallback } from 'react';
 
-import { keyboardLayout } from './vkbd-keyboard-layouts';
+import { keyboardLayout, landscapePlayBaseButtonNotes, portraitPlayBaseButtonNotes } from './vkbd-keyboard-layouts';
 import VkbdButtonIcon from './vkbd-button-icons';
 import VkbdModePanel from './vkbd-mode-panel';
 
@@ -49,10 +49,25 @@ function buttonClickHandler (e, inputHandler) {
     }
 }
 
-function VkbdButton({btn, inputMode, completed, toolTipText}) {
+function VkbdButton({ btn, inputMode, completed, toolTipText, isPortrait }) {
     let content;
     const isDigit = ('1' <= btn.text && btn.text <= '9');
     const wantDoubleClick = (btn.wantDoubleClick || isDigit) ? 'true' : null;
+
+    // Check if we're in the "Notes" section and adjust the fontSize accordingly
+    let fontSize = btn.fontSize;
+    let textY = btn.top + btn.textY;
+
+    if (inputMode === 'inner' && (btn.text === 'Notes' || btn.text.match(/^[1-9]$/))) {
+        if (isPortrait) {
+            fontSize = portraitPlayBaseButtonNotes.fontSize;
+            textY = btn.top + portraitPlayBaseButtonNotes.textY;
+        } else {
+            fontSize = landscapePlayBaseButtonNotes.fontSize;
+            textY = btn.top + landscapePlayBaseButtonNotes.textY;
+        }
+    }
+
     if (btn.icon) {
         content = <VkbdButtonIcon btn={btn} />;
     }
@@ -60,11 +75,13 @@ function VkbdButton({btn, inputMode, completed, toolTipText}) {
         content = (
             <rect
                 className={`vkbd-button-swatch color-code-${btn.value}`}
-                x={btn.left + 30}
-                y={btn.top + 30}
-                width={btn.width - 60}
-                height={btn.height - 60}
-                rx="5"
+                x={btn.left}
+                y={btn.top}
+                width={btn.width}
+                height={btn.height}
+                rx="20"
+                stroke="var(--text-color)"
+                strokeWidth="3" // Border width (1px solid border)
             />
         );
     }
@@ -72,11 +89,11 @@ function VkbdButton({btn, inputMode, completed, toolTipText}) {
         content = (
             <text
                 x={btn.left + btn.textX}
-                y={btn.top + btn.textY}
-                fontSize={btn.fontSize}
+                y={textY}
+                fontSize={fontSize}
                 textAnchor="middle"
             >
-            {btn.text}
+                {btn.text}
             </text>
         );
     }
@@ -92,6 +109,8 @@ function VkbdButton({btn, inputMode, completed, toolTipText}) {
                 width={btn.width}
                 height={btn.height}
                 rx="20"
+                stroke="var(--text-color)"
+                strokeWidth="3" // Border width (1px solid border)
             />
             {content}
             <rect

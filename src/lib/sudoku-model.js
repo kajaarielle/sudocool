@@ -146,7 +146,7 @@ export const modelHelpers = {
     DEFAULT_SETTINGS: {
         [SETTINGS.darkMode]: true,
         [SETTINGS.showTimer]: true,
-        [SETTINGS.simplePencilMarking]: false,
+        [SETTINGS.simplePencilMarking]: true,
         [SETTINGS.outlineSelection]: false,
         [SETTINGS.highlightMatches]: true,
         [SETTINGS.highlightConflicts]: true,

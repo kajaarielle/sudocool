@@ -51,12 +51,12 @@ export default function ModalSettings({modalHandler, modalState}) {
                     allSettings={allSettings}
                     setSetting={setSetting}
                 />
-                <CheckBoxSetting
+                {/* <CheckBoxSetting
                     name={SETTINGS.simplePencilMarking}
                     text="“Simple” pencil marking mode"
                     allSettings={allSettings}
                     setSetting={setSetting}
-                />
+                /> */}
                 <CheckBoxSetting
                     name={SETTINGS.outlineSelection}
                     text="Show selection as outline"
@@ -87,12 +87,12 @@ export default function ModalSettings({modalHandler, modalState}) {
                     allSettings={allSettings}
                     setSetting={setSetting}
                 />
-                <CheckBoxSetting
+                {/* <CheckBoxSetting
                     name={SETTINGS.showRatings}
                     text="Show puzzle rating numbers"
                     allSettings={allSettings}
                     setSetting={setSetting}
-                />
+                /> */}
                 <CheckBoxSetting
                     name={SETTINGS.flipNumericKeys}
                     text="Flip on-screen keyboard digits"

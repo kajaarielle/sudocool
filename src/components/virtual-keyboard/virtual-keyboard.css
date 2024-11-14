@@ -49,7 +49,7 @@
 }
 
 .vkbd .mode-button-icon.active {
-    fill: var(--vkbd-active-mode-icon-fill-color);
+    fill: var(--vkbd-active-mode-icon-fill-color) !important;
 }
 
 .vkbd .input-mode-color rect {

@@ -9,7 +9,7 @@
     padding: 0;
     color: var(--status-bar-text-color);
     background: var(--status-bar-bg);
-    border-bottom: 1px solid var(--status-bar-border-color);
+    /* border-bottom: 1px solid var(--status-bar-border-color); */
 }
 
 .status-bar .site-link {

@@ -7,7 +7,8 @@
     --link-hover-text-color: #0000ff;
     --link-hover-bg-color: #f0f0f0;
     --status-bar-text-color: #777777;
-    --status-bar-bg: linear-gradient(#efefef, #e6e6e6);
+    /* --status-bar-bg: linear-gradient(#efefef, #e6e6e6); */
+    --status-bar-bg: var(--background-color);
     --status-bar-border-color: #c7c7c7;
     --status-bar-button-hover-color: #d7d7d7;
     --menu-border-color: #888888;
@@ -92,15 +93,15 @@
     --grid-line-width: 2;
     --grid-line-width-bold: 5;
     --hint-hot-spot-highlight-line-width: 7;
-    --vkbd-bg-fill-color: #e3e3e3;
+    --vkbd-bg-fill-color: var(--background-color);
     --vkbd-button-fill-color: #ffffff;
     --vkbd-button-text-color: #333333;
     --vkbd-completed-button-text-color: #4cce4c;
-    --vkbd-mode-panel-fill-color: #e6e6e6;
-    --vkbd-mode-text-color: #888888;
-    --vkbd-active-mode-fill-color: #777777;
+    --vkbd-mode-panel-fill-color: #fafafa;
+    --vkbd-mode-text-color: #4b4b4b;
+    --vkbd-active-mode-fill-color: #292929;
     --vkbd-mode-icon-fill-color: #333333;
-    --vkbd-active-mode-icon-fill-color: #eeeeee;
+    --vkbd-active-mode-icon-fill-color: #f1f1f1;
     --spinner-color: #dddddd;
 }
 
@@ -112,12 +113,13 @@
     --link-hover-text-color: #ededed;
     --link-hover-bg-color: #414141;
     --status-bar-text-color: #dfdfdf;
-    --status-bar-bg: linear-gradient(#525252, #1e1e1e);
+    /* --status-bar-bg: linear-gradient(#525252, #1e1e1e); */
+    --status-bar-bg: var(--background-color);
     --status-bar-border-color: #000000;
-    --status-bar-button-hover-color: #726c6d;
+    --status-bar-button-hover-color: #222229;
     --menu-border-color: #171717;
     --menu-text-color: #9d9a9a;
-    --menu-bg-color: #443f3f;
+    --menu-bg-color: #313139;
     --menu-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
     --menu-hover-text-color: #c4c4c4;
     --menu-hover-bg-color: #182f5d;
@@ -190,7 +192,7 @@
     --button-text-color: #333333;
     --grid-line-width: 2;
     --grid-line-width-bold: 5;
-    --vkbd-bg-fill-color: #222427;
+    --vkbd-bg-fill-color: var(--background-color);
     --vkbd-button-fill-color: var(--background-color);
     --vkbd-button-text-color: #b4b5bb;
     --vkbd-completed-button-text-color: #60ac60;

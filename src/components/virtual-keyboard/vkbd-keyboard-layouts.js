@@ -3,8 +3,16 @@ const landscapePlayBaseButton = {
     width: 200,
     height: 200,
     textX: 100,
-    textY: 160,
-    fontSize: 170,
+    textY: 150,
+    fontSize: 140,
+};
+
+export const landscapePlayBaseButtonNotes = {
+    width: 200,
+    height: 200,
+    textX: 100,
+    textY: 130,
+    fontSize: 80,
 };
 
 const landscapePlayButtonDefs = [
@@ -61,7 +69,7 @@ const landscapePlayButtonDefs = [
         width: 440,
         textX: 222,
         textY: 130,
-        fontSize: 90,
+        fontSize: 80,
     },
     {
         value: "check",
@@ -71,7 +79,7 @@ const landscapePlayButtonDefs = [
         width: 440,
         textX: 222,
         textY: 130,
-        fontSize: 90,
+        fontSize: 80,
     },
     {
         value: "undo",
@@ -114,8 +122,16 @@ const portraitPlayBaseButton = {
     width: 200,
     height: 200,
     textX: 100,
-    textY: 160,
-    fontSize: 170,
+    textY: 150,
+    fontSize: 130,
+};
+
+export const portraitPlayBaseButtonNotes = {
+    width: 200,
+    height: 200,
+    textX: 80,
+    textY: 140,
+    fontSize: 100,
 };
 
 const portraitPlayButtonDefs = [
@@ -172,7 +188,7 @@ const portraitPlayButtonDefs = [
         width: 440,
         textX: 222,
         textY: 130,
-        fontSize: 90,
+        fontSize: 80,
     },
     {
         value: "check",
@@ -182,7 +198,7 @@ const portraitPlayButtonDefs = [
         width: 200,
         textX: 222,
         textY: 130,
-        fontSize: 90,
+        fontSize: 80,
     },
     {
         value: "undo",
