@@ -51,12 +51,12 @@ export default function ModalSettings({modalHandler, modalState}) {
                     allSettings={allSettings}
                     setSetting={setSetting}
                 />
-                {/* <CheckBoxSetting
+                <CheckBoxSetting
                     name={SETTINGS.simplePencilMarking}
                     text="“Simple” pencil marking mode"
                     allSettings={allSettings}
                     setSetting={setSetting}
-                /> */}
+                />
                 <CheckBoxSetting
                     name={SETTINGS.outlineSelection}
                     text="Show selection as outline"

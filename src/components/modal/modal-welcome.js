@@ -225,9 +225,6 @@ function ModalWelcome({ modalState, modalHandler }) {
             Enter a new puzzle
           </button>
           */}
-          {/* <button className="primary new-puzzle" onClick={showPasteHandler}>
-            Paste a new puzzle
-          </button>  */}
         </div>
         {/* <p>Or you can select a recently shared puzzle:</p> */}
         {/* <RecentlyShared modalState={modalState} /> */}
@@ -239,15 +236,28 @@ function ModalWelcome({ modalState, modalHandler }) {
         />
       </div>
       <div className="footer">
-        <div className="buttons-horizontal" style={{margin: "20px"}}>
+        <div className="buttons-horizontal" style={{ margin: "20px" }}>
           <SavedPuzzlesButton
             savedPuzzles={savedPuzzles}
             modalHandler={modalHandler}
           />
+          <button className="secondary new-puzzle" onClick={showPasteHandler}>
+            Paste a new puzzle
+          </button>
         </div>
-        <div style={{display: "flex", flexDirection: "row", gap: "8px", justifyContent: "center", paddingTop: "12px" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            gap: "8px",
+            justifyContent: "center",
+            paddingTop: "12px",
+          }}
+        >
           <img src={SudocoolLogo} alt="Logo" style={{ maxWidth: "36px" }} />
-          <p style={{color: "white", fontSize: ".8rem"}}>Sudocool by Kaja Arielle</p>
+          <p style={{ color: "white", fontSize: ".8rem" }}>
+            Sudocool by Kaja Arielle
+          </p>
         </div>
       </div>
     </div>
