@@ -750,7 +750,7 @@ test('defaultDigitOpForSelection', () => {
 
 test('simple pencil marking mode', () => {
     let grid = newSudokuModel({initialDigits: initialDigitsPartial, skipCheck: true});
-    expect(modelHelpers.getSetting(grid, SETTINGS.simplePencilMarking)).toBe(false);
+    expect(modelHelpers.getSetting(grid, SETTINGS.simplePencilMarking)).toBe(true);
 
     expect(grid.get('currentSnapshot')).toBe('');
     grid = modelHelpers.applySelectionOp(grid, 'setSelection', 0);
