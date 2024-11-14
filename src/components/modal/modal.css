@@ -203,7 +203,8 @@ a p {
 }
 
 .landing-page .footer {
-  min-height: 160px;
+  min-height: fit-content;
+  padding: 20px;
   background-color: var(--text-color)
 }
 
@@ -246,7 +247,7 @@ a p {
 }
 
 @media (max-width: 601px) {
-  .bar-logo {
+  .status-bar .bar-logo {
     display: none;
   }
 }
