@@ -4,7 +4,6 @@ import {
     MODAL_TYPE_RESUME_OR_RESTART,
     MODAL_TYPE_INVALID_INITIAL_DIGITS,
     MODAL_TYPE_PASTE,
-    MODAL_TYPE_PASTE_EXAMPLE,
     MODAL_TYPE_SHARE,
     MODAL_TYPE_SETTINGS,
     MODAL_TYPE_CHECK_RESULT,
@@ -73,9 +72,6 @@ export default function ModalContainer({modalState, modalHandler, menuHandler}) 
         content = <ModalInvalidInitialDigits modalState={modalState} modalHandler={modalHandler} />;
     }
     else if (modalState.modalType === MODAL_TYPE_PASTE) {
-        content = <ModalPaste modalHandler={modalHandler} />;
-    }
-    else if (modalState.modalType === MODAL_TYPE_PASTE_EXAMPLE) {
         content = <ModalPaste modalHandler={modalHandler} />;
     }
     else if (modalState.modalType === MODAL_TYPE_ABOUT) {
