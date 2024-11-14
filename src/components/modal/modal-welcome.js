@@ -6,6 +6,8 @@ import { compressPuzzleDigits } from "../../lib/string-utils";
 import SudokuMiniGrid from "../sudoku-grid/sudoku-mini-grid";
 import Spinner from "../spinner/spinner";
 
+import SudocoolLogo from "../../assets/sudocool-logo-bw-white-256.svg";
+
 import {
   getRandomPuzzles,
   PUZZLES,
@@ -218,12 +220,14 @@ function ModalWelcome({ modalState, modalHandler }) {
       </div>
       <div className="page-content">
         <div className="buttons-horizontal">
-          {/* <button className="primary new-puzzle" onClick={cancelHandler}>
+          {/* 
+          <button className="primary new-puzzle" onClick={cancelHandler}>
             Enter a new puzzle
           </button>
+          */}
           <button className="primary new-puzzle" onClick={showPasteHandler}>
             Paste a new puzzle
-          </button> */}
+          </button> 
         </div>
         {/* <p>Or you can select a recently shared puzzle:</p> */}
         {/* <RecentlyShared modalState={modalState} /> */}
@@ -235,6 +239,10 @@ function ModalWelcome({ modalState, modalHandler }) {
         />
       </div>
       <div className="footer">
+        <div style={{display: "flex"}}>
+          <p style={{color: "white", fontSize: ".8rem"}}>Sudocool by Kaja Arielle</p>
+          <img src={SudocoolLogo} alt="Logo" style={{ maxWidth: "64px" }} />
+        </div>
         <p style={{ textAlign: "center", color: "white" }}>
           {/* You can get started by entering a new puzzle into a blank grid */}
           {orRestoreMsg}:
